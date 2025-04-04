@@ -20,25 +20,25 @@ const applyJob = async (req, res) => {
         const candidate = await UserModal.findById(req.user._id);
         console.log("candidate", candidate)
 
-        recruiterEmail = job.postedBy.email;
-        emailPass = job.postedBy.password;
+        // recruiterEmail = job.postedBy.email;
+        // emailPass = job.postedBy.password;
 
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: recruiterEmail,
-                pass: emailPass,
-            },
-        });
+        // const transporter = nodemailer.createTransport({
+        //     service: 'gmail',
+        //     auth: {
+        //         user: recruiterEmail,
+        //         pass: emailPass,
+        //     },
+        // });
 
-        const mailOptions = {
-            from: recruiterEmail,
-            to: `${candidate.email}, ${job.recruiter.email}`,
-            subject: 'New Job Application Received',
-            text: `📩 Candidate ${candidate.email} has applied for the job: "${job.title}".`,
-        };
+        // const mailOptions = {
+        //     from: recruiterEmail,
+        //     to: `${candidate.email}, ${job.recruiter.email}`,
+        //     subject: 'New Job Application Received',
+        //     text: `📩 Candidate ${candidate.email} has applied for the job: "${job.title}".`,
+        // };
 
-        await transporter.sendMail(mailOptions);
+        // await transporter.sendMail(mailOptions);
 
         res.status(201).json({
             application,
